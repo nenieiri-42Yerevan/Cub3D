@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:12:51 by vismaily          #+#    #+#             */
-/*   Updated: 2021/10/31 22:39:01 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/11/13 20:53:13 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ int	main(int argc, char **argv)
 				printf("Map is empty :(\n");
 				return (0);
 			}
-			if (parsing_map(&map, map_height) == 0)
-			{} //cub3D(&map, map_height);
+			if (parsing_map(&map, map_height) == 1)
+				puts("YES MY ERROR");
+			//cub3D(&map, map_height);
 		}
 		else
 			printf("File open error\n");
 	}
 	else
 		printf("You must give 1 argument to your program,"
-				" and that have to be a map with .cub extension\n");
+			" and that have to be a map with .cub extension\n");
 	return (0);
 }

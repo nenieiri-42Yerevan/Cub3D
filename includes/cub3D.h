@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/02 20:16:34 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/11/13 21:11:42 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include <stdio.h>
+# include <stdlib.h>
 # include "libft.h"
 # include "libgnl.h"
 
@@ -26,8 +27,12 @@ struct	s_map
 	char	*we;
 	char	*ea;
 	char	*s;
-	char	*f;
-	char	*c;
+	int		fr;
+	int		fg;
+	int		fb;
+	int		cr;
+	int		cg;
+	int		cb;
 	char	dir;
 	char	**map;
 	size_t	map_height;
@@ -37,10 +42,12 @@ int		errors(int n);
 int		errors_param(int n, char *str);
 int		errors_settings(int n);
 int		settings_checker(void);
+int		check_duplicates(int *duplicates);
 int		parsing_map(char ***map, size_t map_height);
 int		parsing_map_settings(char ***map, size_t map_height);
 int		parsing_resolution(char **str, int *r_x, int *r_y);
 int		parsing_by_cross(size_t i, size_t j);
+int		parsing_color(char **str, char c);
 int		cub3D(char ***map, size_t map_height);
 
 #endif

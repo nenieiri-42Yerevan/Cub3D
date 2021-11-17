@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 22:50:58 by vismaily          #+#    #+#             */
-/*   Updated: 2021/10/31 22:52:37 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/11/13 20:37:42 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,27 @@ int	settings_checker(void)
 		return (errors_settings(5));
 	if (my_map.s == NULL)
 		return (errors_settings(6));
-	if (my_map.f == NULL)
+	if (!(my_map.fr >= 0 && my_map.fg >= 0 && my_map.fb >= 0 && \
+		my_map.fr <= 255 && my_map.fg <= 255 && my_map.fb <= 255))
 		return (errors_settings(7));
-	if (my_map.c == NULL)
+	if (!(my_map.cr >= 0 && my_map.cg >= 0 && my_map.cb >= 0 && \
+		my_map.cr <= 255 && my_map.cg <= 255 && my_map.cb <= 255))
 		return (errors_settings(8));
+	return (0);
+}
+
+int	check_duplicates(int *duplicates)
+{
+	size_t	len;
+	size_t	i;
+
+	len = 8;
+	i = 0;
+	while (i < len)
+	{
+		if (duplicates[i] > 1)
+			return (errors(10));
+		i++;
+	}
 	return (0);
 }

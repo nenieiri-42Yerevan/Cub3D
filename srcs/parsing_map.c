@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 15:49:43 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/04 19:05:53 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/11/13 20:36:43 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static int	parsing_map_by_lines(void)
 		{
 			if ((i == 0 || (i == my_map.map_height - 1)) && \
 					(my_map.map[i][j] != '1' && my_map.map[i][j] != ' '))
-					return (errors(6));
-			else if (i != 0 && (i != my_map.map_height - 1) && 
-					my_map.map[i][j] != ' ')
+				return (errors(6));
+			else if (i != 0 && (i != my_map.map_height - 1) && \
+							my_map.map[i][j] != ' ')
 				break ;
 		}
 		if (i != 0 && (i != my_map.map_height - 1) && j == len)
@@ -42,7 +42,8 @@ static int	parsing_map_by_lines(void)
 
 static int	parsing_player(size_t i, size_t j)
 {
-	static int n_s_e_w = 0;
+	static int	n_s_e_w = 0;
+
 	if (my_map.map[i][j] == 'N' || my_map.map[i][j] == 'S' || \
 			my_map.map[i][j] == 'E' || my_map.map[i][j] == 'W')
 	{
@@ -67,7 +68,7 @@ static int	parsing_map_inner(void)
 		len = ft_strlen(my_map.map[i]);
 		while (++j < len)
 		{
-			if(my_map.map[i][j] == '1' || my_map.map[i][j] == ' ')
+			if (my_map.map[i][j] == '1' || my_map.map[i][j] == ' ')
 				continue ;
 			else if (my_map.map[i][j] == '0' || my_map.map[i][j] == '2' || \
 					my_map.map[i][j] == 'N' || my_map.map[i][j] == 'S' || \
@@ -85,6 +86,12 @@ static int	parsing_map_inner(void)
 
 int	parsing_map(char ***map, size_t map_height)
 {
+	my_map.fr = 500;
+	my_map.fg = 500;
+	my_map.fb = 500;
+	my_map.cr = 500;
+	my_map.cg = 500;
+	my_map.cb = 500;
 	if (parsing_map_settings(map, map_height) == 0)
 	{
 		if (settings_checker() == 1 || parsing_map_by_lines() == 1)
@@ -94,20 +101,7 @@ int	parsing_map(char ***map, size_t map_height)
 		if (!(my_map.dir == 'N' || my_map.dir == 'S' || my_map.dir == 'E' || \
 				my_map.dir == 'W'))
 			return (errors(9));
-		//return (0);
+		return (0);
 	}
-
-
-
-
-	int len;
-	for(size_t i = 0; i < my_map.map_height; i++)
-	{
-		len = ft_strlen(my_map.map[i]);
-		for(int j = 0; j < len; j++)
-			printf("%c", my_map.map[i][j]);
-		printf("\n");
-	}
-
 	return (1);
 }

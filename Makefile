@@ -16,15 +16,15 @@ LIBFT		= $(LIB)/libft
 
 LIBGNL		= $(LIB)/get_next_line
 
-LIBMLX		= $(LIB)/mlx
-LIBMLX_		= lib/mlx
-MLX			= -L$(LIBMLX) -lmlx -framework OpenGL -framework AppKit
-MACH_EXTRA	= install_name_tool -change @loader_path/libbass.dylib @loader_path/bass/libbass.dylib $(NAME) \
+#LIBMLX		= $(LIB)/mlx_linux
+#LIBMLX_		= lib/mlx_linux
+#MLX			= -L$(LIBMLX) -lmlx -framework OpenGL -framework AppKit
+#MACH_EXTRA	= install_name_tool -change @loader_path/libbass.dylib @loader_path/bass/libbass.dylib $(NAME) \
 				&& install_name_tool -change libmlx.dylib @loader_path/${LIBMLX_}/libmlx.dylib $(NAME)
 
-INCLUDES	= -I./includes
+INCLUDES	= -I./includes #-Imlx_linux
 
-LINKERS		= -L$(LIBFT) -lft -L$(LIBGNL) -lgnl -L$(LIBMLX) -lmlx
+LINKERS		= -L$(LIBGNL) -lgnl -L$(LIBFT) -lft #-L$(LIBMLX) -lmlx_Linux -lXext -lX11 -lm -lz
 
 RM			= rm -rf
 
@@ -41,14 +41,14 @@ $(TMP):
 $(NAME):	$(OBJS)
 			@$(MAKE) -C $(LIBFT) all
 			@$(MAKE) -C $(LIBGNL) all
-			@$(MAKE) -C $(LIBMLX) all
-			@$(CC) $(CFLAGS) $(LINKERS) $(INCLUDES) -o $(NAME) $(OBJS)
-			@$(MACH_EXTRA)
+			#@$(MAKE) -C $(LIBMLX) all
+			$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -o $(NAME)
+			#@$(MACH_EXTRA)
 
 clean:
 			@$(MAKE) -C $(LIBFT) clean
 			@$(MAKE) -C $(LIBGNL) clean
-			@$(MAKE) -C $(LIBMLX) clean
+			#@$(MAKE) -C $(LIBMLX) clean
 			@$(RM) $(TMP)
 
 fclean:		clean
