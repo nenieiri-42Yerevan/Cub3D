@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 22:14:10 by vismaily          #+#    #+#             */
-/*   Updated: 2021/10/06 22:23:44 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/11/20 20:43:18 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@
 # define KEY_9				25
 
 //Alpha
-# define KEY_Q				12
-# define KEY_W				13
-# define KEY_E				14
+# define KEY_Q				113	//MAC - 12 | PS2 - 113
+# define KEY_W				119	//MAC - 13 | PS2 - 119
+# define KEY_E				14	//MAC - 14 | PS2 - 101
 # define KEY_R				15
 # define KEY_T				17
 # define KEY_Y				16
@@ -48,9 +48,9 @@
 # define KEY_I				34
 # define KEY_O				31
 # define KEY_P				35
-# define KEY_A				0
-# define KEY_S				1
-# define KEY_D				2
+# define KEY_A				97	//MAC - 0  | PS2 - 97
+# define KEY_S				115	//MAC - 1  | PS2 - 115
+# define KEY_D				100	//MAC - 2  | PS2 - 100
 # define KEY_F				3
 # define KEY_G				5
 # define KEY_H				4
@@ -66,10 +66,10 @@
 # define KEY_M				46
 
 //Arrows
-# define KEY_ARROW_UP		126
-# define KEY_ARROW_DOWN		125
-# define KEY_ARROW_LEFT		123
-# define KEY_ARROW_RIGHT	124
+# define KEY_ARROW_UP		65362	//MAC - 126 | PS2 - 65362
+# define KEY_ARROW_DOWN		65364	//MAC - 125 | PS2 - 65364
+# define KEY_ARROW_LEFT		65361	//MAC - 123 | PS2 - 65361
+# define KEY_ARROW_RIGHT	65363	//MAC - 124 | PS2 - 65363
 
 //Special Keys
 # define KEY_LCTRL			256
@@ -82,7 +82,7 @@
 # define KEY_RALT			262
 # define KEY_RETURN			36
 # define KEY_ENTER			76
-# define KEY_ESC			53
+# define KEY_ESC			65307	//MAC - 53 | PS2 - 65307
 # define KEY_DELETE			51
 # define KEY_DEL			117
 # define KEY_TAB			48
@@ -129,4 +129,5 @@
 # define KEY_SCROLL_DOWN	5
 # define KEY_SCROLL_UP		4
 
+//
 #endif

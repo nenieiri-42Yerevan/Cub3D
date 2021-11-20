@@ -22,13 +22,13 @@ else ifeq ($(UNAME), FreeBSD)
 else
 	#Linux and others...
 	CC	= gcc
-	LFLAGS += -lbsd
+	#LFLAGS += -lbsd
 endif
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
+	@$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
 
 show:
 	@printf "UNAME		: $(UNAME)\n"
@@ -40,6 +40,6 @@ show:
 	@printf "OBJ		:\n	$(OBJ)\n"
 
 clean:
-	rm -f $(NAME) $(OBJ) *~ core *.core
+	@rm -f $(NAME) $(OBJ) *~ core *.core
 
 re: clean all
