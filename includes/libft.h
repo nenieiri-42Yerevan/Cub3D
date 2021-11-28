@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 19:13:16 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/03 20:59:27 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/11/27 21:43:59 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), \
 			void (*del)(void *));
+char			*ft_tohex(int n);
 
 #endif

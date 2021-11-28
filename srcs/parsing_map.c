@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 15:49:43 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/13 20:36:43 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/11/21 14:26:22 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static int	parsing_player(size_t i, size_t j)
 			my_map.map[i][j] == 'E' || my_map.map[i][j] == 'W')
 	{
 		my_map.dir = my_map.map[i][j];
+		pos.map_x = j;
+		pos.map_y = i;
 		n_s_e_w++;
 	}
 	if (n_s_e_w > 1)

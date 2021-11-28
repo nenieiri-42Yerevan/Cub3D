@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_pixel.c                                        :+:      :+:    :+:   */
+/*   find_draw.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/20 18:47:21 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/27 21:56:24 by vismaily         ###   ########.fr       */
+/*   Created: 2021/11/27 21:58:38 by vismaily          #+#    #+#             */
+/*   Updated: 2021/11/28 17:21:37 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	put_pixel(t_data *data, int x, int y, int color)
+void	find_draw(void)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	get_color(t_data *data, int x, int y)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	return (*(int *)dst);
-}
-
-int	creat_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
+	game.draw.line_height = (int)round(game.map.r_y / game.draw.wall_dist);
+	game.draw.draw_start = game.map.r_y / 2 - game.draw.line_height / 2;
+	if (game.draw.draw_start < 0)
+		game.draw.draw_start = 0;
+	game.draw.draw_end = game.map.r_y / 2 + game.draw.line_height / 2;
+	if (game.draw.draw_end >= game.map.r_y)
+		game.draw.draw_end = game.map.r_y - 1;
 }

@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 20:08:24 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/13 20:51:08 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/11/28 18:06:12 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 static int	errors_two(int n)
 {
 	if (n == 8)
-		printf("Error:The map must be contain only one N, S, E or W character");
+		printf("Error:The map must be contain only one"
+			"N, S, E or W character\n");
 	else if (n == 9)
-		printf("Error:The map must be contain N, S, E or W character");
+		printf("Error:The map must be contain N, S, E or W character\n");
 	else if (n == 10)
-		printf("Error:There are duplicates in your map");
+		printf("Error:There are duplicates in your map\n");
 	return (1);
 }
 
@@ -35,14 +36,14 @@ int	errors(int n)
 		printf("Error\nX resolution must be from 640 to 4096\n"
 			"Y resolution must be from 480 to 2160\n");
 	else if (n == 5)
-		printf("Error: Map can't have empty lines");
+		printf("Error: Map can't have empty lines\n");
 	else if (n == 6)
-		printf("Error: The map must be closed/surrounded by walls");
+		printf("Error: The map must be closed/surrounded by walls\n");
 	else if (n == 7)
 		printf("Error: The map must be composed only of only 4 possible:"
 			"characters\n0 - for an empty space\n1 - for a wall\n"
 			"2 - for an item\nN, S, E or W - for the player's start"
-			"position and spawning orientation");
+			"position and spawning orientation\n");
 	else
 		return (errors_two(n));
 	return (1);
