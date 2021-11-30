@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/27 23:21:37 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/01 00:20:09 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 # define CUB3D_H
 
 # define INITIAL_FOV 66 
+# define NO_WALL "0NSWE"
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <math.h>
 # include "libft.h"
 # include "libgnl.h"
 # include "mlx.h"
 # include "keys.h"
-# include "math.h"
 
 typedef struct s_data
 {
@@ -117,5 +118,6 @@ void	ray_cast(void);
 void	find_delta(int x);
 void	find_hit(void);
 void	find_draw(void);
+void	move(int key);
 
 #endif
