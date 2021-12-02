@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/01 00:20:09 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/03 01:19:36 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ void	find_delta(int x);
 void	find_hit(void);
 void	find_draw(void);
 void	move(int key);
+void	rotate(int key);
 
 #endif
