@@ -6,14 +6,14 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/03 01:19:36 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/04 23:10:51 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define INITIAL_FOV 66 
+# define INITIAL_FOV 60 
 # define NO_WALL "0NSWE"
 
 # include <stdio.h>
@@ -53,6 +53,16 @@ struct	s_map
 	size_t	map_height;
 }		my_map;
 
+struct	s_textures
+{
+	int		tex_width;
+	int		tex_height;
+	t_data	no;
+	t_data	so;
+	t_data	we;
+	t_data	ea;
+};
+
 struct	s_pos
 {
 	int		angle;
@@ -75,26 +85,33 @@ struct	s_pos
 	int		step_x;
 	int		step_y;
 	int		side;
-}		pos;
+};
 
 struct	s_draw
 {
 	double	move_speed;
 	double	rot_speed;
 	double	wall_dist;
+	double	hit_point;
+	double	step;
+	double	tex_pos;
+	int		tex_x;
+	int		tex_y;
+	t_data	tex;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-}		draw;
+};
 
 struct	s_mlx
 {
-	void			*mlx;
-	void			*mlx_win;
-	t_data			img;
-	struct s_map	map;
-	struct s_pos	pos;
-	struct s_draw	draw;
+	void				*mlx;
+	void				*mlx_win;
+	t_data				img;
+	struct s_map		map;
+	struct s_pos		pos;
+	struct s_draw		draw;
+	struct s_textures	textures;
 }		game;
 
 int		errors(int n);
@@ -114,11 +131,13 @@ int		creat_trgb(int t, int r, int g, int b);
 int		mlx_close(void);
 int		mlx_press(int key);
 void	pos_init(void);
-void	ray_cast(void);
+int		ray_cast(void);
 void	find_delta(int x);
 void	find_hit(void);
 void	find_draw(void);
+void	draw(int *x, int *y);
 void	move(int key);
 void	rotate(int key);
+void	textures(void);
 
 #endif

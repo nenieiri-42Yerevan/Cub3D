@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 23:58:01 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/03 01:35:42 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/04 00:11:15 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,4 @@ void	move(int key)
 	}
 	else
 		move_down(key);
-	ray_cast();
 }

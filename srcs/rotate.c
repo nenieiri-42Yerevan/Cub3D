@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 01:19:54 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/03 01:42:41 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/04 00:11:46 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,4 @@ void	rotate(int key)
 	}
 	else if (key == KEY_ARROW_RIGHT)
 		rotate_right(old_dir_x, old_plane_x);
-	ray_cast();
 }

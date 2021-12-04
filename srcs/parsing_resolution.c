@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 20:05:01 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/03 21:09:50 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/04 20:44:19 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static int	parsing_r_y(char *trim_str, int *r_x, int *r_y)
 	size_t	i;
 
 	i = -1;
-	while (++i < ft_strlen(trim_str) && trim_str[i] >= '0' && trim_str[i] < '9')
+	while (++i < ft_strlen(trim_str) && trim_str[i] >= '0' \
+			&& trim_str[i] <= '9')
 		;
 	if (trim_str[i] == '\0')
 		*r_y = ft_atoi(&trim_str[0]);

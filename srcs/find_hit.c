@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 23:54:14 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/28 18:08:40 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/04 23:21:05 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ static	void	find_wall_dist(void)
 	else
 		game.draw.wall_dist = game.pos.side_y - game.pos.delta_y;
 	game.draw.wall_dist /= game.pos.ray_dir;
+	if (game.pos.side == 0)
+		game.draw.hit_point = game.pos.pos_y + game.draw.wall_dist * \
+						game.pos.ray_dir_y;
+	else
+		game.draw.hit_point = game.pos.pos_x + game.draw.wall_dist * \
+						game.pos.ray_dir_x;
+	game.draw.hit_point -= floor(game.draw.hit_point);
+	if ((game.pos.side == 0 && game.pos.ray_dir_x < 0) || (game.pos.side == 1 \
+				&& game.pos.ray_dir_y < 0))
+		game.draw.hit_point = 1 - game.draw.hit_point;
 }
 
 void	find_hit(void)
