@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 18:09:35 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/04 23:12:40 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/05 22:53:31 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	game_init(void)
 {
 	game.map = my_map;
-	game.draw.move_speed = 0.12;
-	game.draw.rot_speed = 0.10;
+	game.draw.move_speed = 0.15;
+	game.draw.rot_speed = 0.12;
 	game.textures.tex_width = 64;
 	game.textures.tex_height = 64;
 }

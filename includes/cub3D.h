@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/04 23:10:51 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/08 23:35:43 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define INITIAL_FOV 60 
 # define NO_WALL "0NSWE"
 
+# include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>

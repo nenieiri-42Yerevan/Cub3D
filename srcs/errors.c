@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 20:08:24 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/28 18:06:12 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/08 23:57:18 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	errors_param(int n, char *str)
 		printf("Error in path of \"%s\"\n", str);
 	if (n == 2)
 		printf("Error in color line \"%s\"\n", str);
+	if (n == 3)
+		printf("Error in path of \"%s\" texture\n", str);
 	return (1);
 }
 
