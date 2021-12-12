@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/08 23:35:43 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/12 20:50:39 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ struct	s_textures
 	t_data	so;
 	t_data	we;
 	t_data	ea;
+	t_data	s;
 };
 
 struct	s_pos
@@ -104,15 +105,40 @@ struct	s_draw
 	int		draw_end;
 };
 
+typedef struct	s_sprite
+{
+	double	x;
+	double	y;
+	char	texture;
+	double	dist;
+	double	transform_x;
+	double	transform_y;
+	int		draw_start_x;
+	int		draw_end_x;
+	int		draw_start_y;
+	int		draw_end_y;
+	int		sprite_width;
+	int		sprite_height;
+	int		sprite_screen_x;
+}				t_sprite;
+
+struct	s_sprites_list
+{
+	double		*perp_dists;
+	int			count;
+	t_sprite	*sprites;
+};
+
 struct	s_mlx
 {
-	void				*mlx;
-	void				*mlx_win;
-	t_data				img;
-	struct s_map		map;
-	struct s_pos		pos;
-	struct s_draw		draw;
-	struct s_textures	textures;
+	void					*mlx;
+	void					*mlx_win;
+	t_data					img;
+	struct s_map			map;
+	struct s_pos			pos;
+	struct s_draw			draw;
+	struct s_textures		textures;
+	struct s_sprites_list	sprites;
 }		game;
 
 int		errors(int n);
@@ -140,5 +166,8 @@ void	draw(int *x, int *y);
 void	move(int key);
 void	rotate(int key);
 void	textures(void);
+void	sprites_array(void);
+void	sprites_sort(void);
+void	draw_sprites(void);
 
 #endif

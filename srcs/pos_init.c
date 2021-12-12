@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 23:36:33 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/25 22:36:52 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/11 13:33:48 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	pos_init(void)
 		game.pos.plane_y = tan((game.pos.angle / 2) * (M_PI / 180));
 	else
 		game.pos.plane_y = -tan((game.pos.angle / 2) * (M_PI / 180));
+	sprites_sort();
 }

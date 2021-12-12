@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:04:12 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/09 00:00:06 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:04:05 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ static void	tex_exist_2(int *ptr)
 	if (*ptr == -1)
 	{
 		errors_param(3, "EA");
+		exit(0);
+	}
+	close(*ptr);
+	*ptr = open(game.map.s, O_RDONLY);
+	if (*ptr == -1)
+	{
+		errors_param(3, "S");
 		exit(0);
 	}
 	close(*ptr);
@@ -75,4 +82,9 @@ void	textures(void)
 	game.textures.ea.addr = mlx_get_data_addr(game.textures.ea.img, \
 			&(game.textures.ea.bits_per_pixel), \
 			&(game.textures.ea.line_length), &(game.textures.ea.endian));
+	game.textures.s.img = mlx_xpm_file_to_image(game.mlx, game.map.s,
+			&(game.textures.tex_width), &(game.textures.tex_height));
+	game.textures.s.addr = mlx_get_data_addr(game.textures.s.img, \
+			&(game.textures.s.bits_per_pixel), \
+			&(game.textures.s.line_length), &(game.textures.s.endian));
 }
