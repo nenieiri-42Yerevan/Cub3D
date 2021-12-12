@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/12 20:50:39 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:21:47 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,23 +122,34 @@ typedef struct	s_sprite
 	int		sprite_screen_x;
 }				t_sprite;
 
-struct	s_sprites_list
+struct	s_sprites
 {
 	double		*perp_dists;
 	int			count;
 	t_sprite	*sprites;
 };
 
+struct	s_keys
+{
+	int	a;
+	int	d;
+	int	w;
+	int	s;
+	int	right;
+	int	left;
+};
+
 struct	s_mlx
 {
-	void					*mlx;
-	void					*mlx_win;
-	t_data					img;
-	struct s_map			map;
-	struct s_pos			pos;
-	struct s_draw			draw;
-	struct s_textures		textures;
-	struct s_sprites_list	sprites;
+	void				*mlx;
+	void				*mlx_win;
+	t_data				img;
+	struct s_map		map;
+	struct s_pos		pos;
+	struct s_draw		draw;
+	struct s_keys		keys;
+	struct s_sprites	sprites;
+	struct s_textures	textures;
 }		game;
 
 int		errors(int n);
@@ -157,14 +168,15 @@ int		get_color(t_data *data, int x, int y);
 int		creat_trgb(int t, int r, int g, int b);
 int		mlx_close(void);
 int		mlx_press(int key);
+int		mlx_release(int key);
 void	pos_init(void);
 int		ray_cast(void);
 void	find_delta(int x);
 void	find_hit(void);
 void	find_draw(void);
 void	draw(int *x, int *y);
-void	move(int key);
-void	rotate(int key);
+void	move(void);
+void	rotate(void);
 void	textures(void);
 void	sprites_array(void);
 void	sprites_sort(void);

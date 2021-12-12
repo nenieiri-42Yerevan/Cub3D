@@ -6,15 +6,15 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 23:58:01 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/04 00:11:15 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/12 22:48:13 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	move_left_right(int key)
+static void	move_left_right(void)
 {
-	if (key == KEY_A)
+	if (game.keys.a == 1)
 	{
 		if (ft_strchr(NO_WALL, \
 					game.map.map[(int)game.pos.pos_y][(int)(game.pos.pos_x - \
@@ -25,7 +25,7 @@ static void	move_left_right(int key)
 						game.draw.move_speed)][(int)game.pos.pos_x]) != NULL)
 			game.pos.pos_y -= game.pos.plane_y * game.draw.move_speed;
 	}
-	else if (key == KEY_D)
+	if (game.keys.d == 1)
 	{
 		if (ft_strchr(NO_WALL, \
 					game.map.map[(int)game.pos.pos_y][(int)(game.pos.pos_x + \
@@ -38,9 +38,9 @@ static void	move_left_right(int key)
 	}
 }
 
-static void	move_down(int key)
+static void	move_down(void)
 {
-	if (key == KEY_S)
+	if (game.keys.s == 1)
 	{
 		if (ft_strchr(NO_WALL, game.map.map[(int)(game.pos.pos_y - \
 						game.pos.dir_y * \
@@ -51,13 +51,12 @@ static void	move_down(int key)
 						game.pos.dir_x * game.draw.move_speed)]) != NULL)
 			game.pos.pos_x -= game.pos.dir_x * game.draw.move_speed;
 	}
-	else
-		move_left_right(key);
+	move_left_right();
 }
 
-void	move(int key)
+void	move(void)
 {
-	if (key == KEY_W)
+	if (game.keys.w == 1)
 	{
 		if (ft_strchr(NO_WALL, game.map.map[(int)(game.pos.pos_y + \
 						game.pos.dir_y * \
@@ -68,6 +67,5 @@ void	move(int key)
 						game.pos.dir_x * game.draw.move_speed)]) != NULL)
 			game.pos.pos_x += game.pos.dir_x * game.draw.move_speed;
 	}
-	else
-		move_down(key);
+	move_down();
 }

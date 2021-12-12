@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 23:09:09 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/11 14:47:22 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/12 23:32:08 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ray_cast(void)
 	int	x;
 	int	y;
 
+	move();
+	rotate();
 	x = 0;
 	while (x < game.map.r_x)
 	{	
