@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/12 23:21:47 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/15 23:31:57 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ struct	s_draw
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+	int		motion_mouse;
+	int		motion_x;
 };
 
 typedef struct	s_sprite
@@ -181,5 +183,7 @@ void	textures(void);
 void	sprites_array(void);
 void	sprites_sort(void);
 void	draw_sprites(void);
+
+int		mlx_mouse(int key);
 
 #endif

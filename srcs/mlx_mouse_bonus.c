@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_cast.c                                         :+:      :+:    :+:   */
+/*   mlx_mouse_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/04 23:09:09 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/16 00:19:28 by vismaily         ###   ########.fr       */
+/*   Created: 2021/12/15 22:36:48 by vismaily          #+#    #+#             */
+/*   Updated: 2021/12/16 00:40:58 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	ray_cast(void)
+int	mlx_mouse(int key)
 {
-	int	x;
-	int	y;
-
-	move();
-	rotate();	
-	x = 0;
-	while (x < game.map.r_x)
-	{	
-		y = 0;
-		find_delta(x);
-		find_hit();
-		find_draw();
-		while (y < game.map.r_y)
-			draw(&x, &y);
-		game.sprites.perp_dists[x] = game.draw.wall_dist;
-		x++;
+	if (game.draw.motion_x != 9999)
+	{
+		if (game.draw.motion_x > key)
+			mlx_press(KEY_ARROW_LEFT);
+		if (game.draw.motion_x < key)
+			mlx_press(KEY_ARROW_RIGHT);
 	}
-	draw_sprites();
-	mlx_put_image_to_window(game.mlx, game.mlx_win, game.img.img, 0, 0);
+	game.draw.motion_mouse = 1;
+	game.draw.motion_x = key;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 18:09:35 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/12 23:35:11 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/16 00:13:05 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 static void	game_init(void)
 {
 	game.map = my_map;
-	game.draw.move_speed = 0.09;
-	game.draw.rot_speed = 0.05;
+	game.draw.move_speed = 0.11;
+	game.draw.rot_speed = 0.14;
+	game.draw.motion_x = 9999;
 	game.sprites.perp_dists = ft_calloc(game.map.r_x, sizeof(double));
 	if (game.sprites.perp_dists == 0)
 	{
@@ -31,6 +32,17 @@ static void	game_init(void)
 	game.keys.w = 0;
 	game.keys.left = 0;
 	game.keys.right = 0;
+}
+
+static void	hooks(void)
+{
+		mlx_hook(game.mlx_win, 17, 1L << 17, mlx_close, 0);
+		mlx_hook(game.mlx_win, 2, 1L << 0, mlx_press, 0);
+		mlx_hook(game.mlx_win, 3, 1L << 1, mlx_release, 0);
+		if (BONUS == 1)
+		{
+			mlx_hook(game.mlx_win, 6, 1L << 6, mlx_mouse, 0);
+		}
 }
 
 int	cub3d(void)
@@ -51,9 +63,7 @@ int	cub3d(void)
 				&(game.img.bits_per_pixel), &(game.img.line_length), \
 				&(game.img.endian));
 		ray_cast();
-		mlx_hook(game.mlx_win, 17, 1L << 17, mlx_close, 0);
-		mlx_hook(game.mlx_win, 2, 1L << 0, mlx_press, 0);
-		mlx_hook(game.mlx_win, 3, 1L << 1, mlx_release, 0);
+		hooks();
 		mlx_loop_hook(game.mlx, ray_cast, NULL);
 		mlx_loop(game.mlx);
 	}

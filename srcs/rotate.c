@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 01:19:54 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/12 22:49:56 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/16 00:20:10 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,10 @@ void	rotate(void)
 	}
 	if (game.keys.right == 1)
 		rotate_right(old_dir_x, old_plane_x);
+	if (game.draw.motion_mouse == 1)
+	{
+		game.keys.left = 0;
+		game.keys.right = 0;
+		game.draw.motion_mouse = 0;
+	}
 }

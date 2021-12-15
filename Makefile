@@ -6,6 +6,8 @@ SRCS		= $(wildcard ./srcs/*.c)
 
 OBJS		= $(patsubst ./srcs/%.c, ./tmp/%.o, $(SRCS))
 
+BONUS_		= 0
+
 CC			= gcc
 
 CFLAGS		= -Wall -Wextra -Werror
@@ -24,21 +26,27 @@ LIBMLX_L	= $(LIB)/mlx_linux
 
 INCLUDES	= -I./includes -I$(LIBMLX_L)
 
-LINKERS		= -L$(LIBGNL) -lgnl -L$(LIBFT) -lft -L$(LIBMLX_L) -lmlx_Linux -lXext -lX11 -lm -lz
+LINKERS		= -L$(LIBGNL) -lgnl -L$(LIBFT) -lft -L$(LIBMLX_L) -lmlx_Linux \
+			  -lXext -lX11 -lm -lz
 
 RM			= rm -rf
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus bonus_on
 
 ./tmp/%.o:	./srcs/%.c ./includes/cub3D.h
-			@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+			$(CC) $(CFLAGS) $(INCLUDES) -D BONUS=$(BONUS_) -o $@ -c $<
 
-all:		$(TMP) $(NAME)
+all:		bonus
+
+bonus:		bonus_on $(NAME) 
+
+bonus_on:
+			$(eval BONUS_ = 1)
 
 $(TMP):
 			@mkdir $(TMP)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(TMP) $(OBJS)
 			@$(MAKE) -C $(LIBFT) all
 			@$(MAKE) -C $(LIBGNL) all
 			@$(MAKE) -C $(LIBMLX_L) all
