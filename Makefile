@@ -19,15 +19,26 @@ LIBFT		= $(LIB)/libft
 LIBGNL		= $(LIB)/get_next_line
 
 LIBMLX_L	= $(LIB)/mlx_linux
-#LIBMLX_		= lib/mlx_linux
-#MLX			= -L$(LIBMLX) -lmlx -framework OpenGL -framework AppKit
-#MACH_EXTRA	= install_name_tool -change @loader_path/libbass.dylib @loader_path/bass/libbass.dylib $(NAME) \
-				&& install_name_tool -change libmlx.dylib @loader_path/${LIBMLX_}/libmlx.dylib $(NAME)
+LIBMLX_L_	= -L$(LIBMLX_L) -lmlx_Linux -lXext -lX11 -lm -lz
 
-INCLUDES	= -I./includes -I$(LIBMLX_L)
+LIBMLX_M	= $(LIB)/mlx
+LIBMLX_M_	= -L$(LIBMLX_M) -lmlx -framework OpenGL -framework AppKit
+MACH_EXTRA	= install_name_tool -change @loader_path/libbass.dylib @loader_path/bass/libbass.dylib $(NAME) \
+				&& install_name_tool -change libmlx.dylib @loader_path/${LIBMLX_M}/libmlx.dylib $(NAME)
 
-LINKERS		= -L$(LIBGNL) -lgnl -L$(LIBFT) -lft -L$(LIBMLX_L) -lmlx_Linux \
-			  -lXext -lX11 -lm -lz
+UNIX_NAME	= $(shell uname -s)
+
+ifeq ($(UNIX_NAME),Darwin)
+LIBMLX		= $(LIBMLX_M)
+LIBMLX_LINK	= $(LIBMLX_M_)
+else ($(UNIX_NAME),Linux)
+LIBMLX		= $(LIBMLX_L)
+LIBMLX_LINK	= $(LIBMLX_L_)
+endif
+
+INCLUDES	= -I./includes -I$(LIBMLX)
+
+LINKERS		= -L$(LIBGNL) -lgnl -L$(LIBFT) -lft $(LIBMLX_LINK)
 
 RM			= rm -rf
 
@@ -49,14 +60,16 @@ $(TMP):
 $(NAME):	$(TMP) $(OBJS)
 			@$(MAKE) -C $(LIBFT) all
 			@$(MAKE) -C $(LIBGNL) all
-			@$(MAKE) -C $(LIBMLX_L) all
+			@$(MAKE) -C $(LIBMLX) all
 			@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -o $(NAME)
-			#@$(MACH_EXTRA)
+ifeq ($(UNIX_NAME),Darwin)
+			@$(MACH_EXTRA)
+endif
 
 clean:
 			@$(MAKE) -C $(LIBFT) clean
 			@$(MAKE) -C $(LIBGNL) clean
-			@$(MAKE) -C $(LIBMLX_L) clean
+			@$(MAKE) -C $(LIBMLX) clean
 			@$(RM) $(TMP)
 
 fclean:		clean
