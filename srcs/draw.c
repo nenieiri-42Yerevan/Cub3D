@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 23:03:13 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/09 01:42:05 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/19 15:02:21 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	draw(int *x, int *y)
 		put_pixel(&(game.img), *x, *y, color);
 	}
 	else
-		put_pixel(&(game.img), *x, *y, creat_trgb(0, game.map.fr, \
+		if (BONUS == 0)
+			put_pixel(&(game.img), *x, *y, creat_trgb(0, game.map.fr, \
 					game.map.fg, game.map.fb));
 	(*y)++;
 }

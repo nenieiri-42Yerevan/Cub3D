@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 16:04:12 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/12 15:04:05 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/19 17:28:10 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ static void	tex_exist_1(void)
 		exit(0);
 	}
 	close(ptr);
+	game.textures.no.img = mlx_xpm_file_to_image(game.mlx, game.map.no,
+			&(game.textures.tex_width), &(game.textures.tex_height));
+	game.textures.no.addr = mlx_get_data_addr(game.textures.no.img, \
+			&(game.textures.no.bits_per_pixel), \
+			&(game.textures.no.line_length), &(game.textures.no.endian));
 	ptr = open(game.map.so, O_RDONLY);
 	if (ptr == -1)
 	{
@@ -61,12 +66,6 @@ static void	tex_exist_1(void)
 void	textures(void)
 {
 	tex_exist_1();
-
-	game.textures.no.img = mlx_xpm_file_to_image(game.mlx, game.map.no,
-			&(game.textures.tex_width), &(game.textures.tex_height));
-	game.textures.no.addr = mlx_get_data_addr(game.textures.no.img, \
-			&(game.textures.no.bits_per_pixel), \
-			&(game.textures.no.line_length), &(game.textures.no.endian));
 	game.textures.so.img = mlx_xpm_file_to_image(game.mlx, game.map.so,
 			&(game.textures.tex_width), &(game.textures.tex_height));
 	game.textures.so.addr = mlx_get_data_addr(game.textures.so.img, \

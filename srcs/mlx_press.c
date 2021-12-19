@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 19:40:17 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/15 23:34:24 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/19 17:30:20 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	mlx_press(int key)
 	return (0);
 }
 
-int	mlx_release(int	key)
+int	mlx_release(int key)
 {
 	if (key == KEY_ARROW_LEFT)
 		game.keys.left = 0;

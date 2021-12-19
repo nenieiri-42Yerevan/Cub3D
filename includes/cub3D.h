@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/15 23:31:57 by vismaily         ###   ########.fr       */
+/*   Updated: 2021/12/19 17:35:32 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define INITIAL_FOV 60 
 # define NO_WALL "0NSWE"
+# define FLOOR "./images/floor.xpm"
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -63,6 +64,7 @@ struct	s_textures
 	t_data	we;
 	t_data	ea;
 	t_data	s;
+	t_data	floor;
 };
 
 struct	s_pos
@@ -105,9 +107,11 @@ struct	s_draw
 	int		draw_end;
 	int		motion_mouse;
 	int		motion_x;
+	int		draw_floor_y;
+	float	floor_row_dist;
 };
 
-typedef struct	s_sprite
+typedef struct s_sprite
 {
 	double	x;
 	double	y;
@@ -122,7 +126,7 @@ typedef struct	s_sprite
 	int		sprite_width;
 	int		sprite_height;
 	int		sprite_screen_x;
-}				t_sprite;
+}	t_sprite;
 
 struct	s_sprites
 {
@@ -185,5 +189,6 @@ void	sprites_sort(void);
 void	draw_sprites(void);
 
 int		mlx_mouse(int key);
+void	draw_floor(void);
 
 #endif
