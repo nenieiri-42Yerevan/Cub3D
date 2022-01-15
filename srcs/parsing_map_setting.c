@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 16:28:22 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/13 21:13:43 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/01/15 23:12:54 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	init(size_t *i, int *result, int **duplicates)
 	*duplicates = malloc(sizeof(int) * 8);
 	if (*duplicates == 0)
 		exit(1);
-	ft_memset(*duplicates, 0, 8);
+	ft_memset(*duplicates, 0, 8 * sizeof(int));
 }
 
 int	parsing_map_settings(char ***map, size_t map_height)
