@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 18:09:35 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/19 17:23:05 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/01/15 23:28:02 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	game_init(void)
 	game.map = my_map;
 	game.draw.move_speed = 0.12;
 	game.draw.rot_speed = 0.14;
-	game.draw.motion_x = 9999;
+	game.draw.motion_x = 99999;
 	game.sprites.perp_dists = ft_calloc(game.map.r_x, sizeof(double));
 	if (game.sprites.perp_dists == 0)
 	{

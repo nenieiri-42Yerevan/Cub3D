@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/19 17:35:32 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/01/15 23:24:00 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void	sprites_array(void);
 void	sprites_sort(void);
 void	draw_sprites(void);
 
-int		mlx_mouse(int key);
+int		mlx_mouse(int x, int y, void *param);
 void	draw_floor(void);
 
 #endif
