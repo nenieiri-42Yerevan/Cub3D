@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/11 13:34:58 by vismaily          #+#    #+#             */
-/*   Updated: 2021/12/11 14:31:38 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:43:56 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ void	sprites_sort(void)
 	{
 		min_idx = i;
 		j = i + 1;
-		while (++j < game.sprites.count)
+		while (j < game.sprites.count)
+		{
 			if (game.sprites.sprites[j].dist > \
 					game.sprites.sprites[min_idx].dist)
 				min_idx = j;
+			j++;
+		}
 		tmp = game.sprites.sprites[i];
 		game.sprites.sprites[i] = game.sprites.sprites[min_idx];
 		game.sprites.sprites[min_idx] = tmp;
