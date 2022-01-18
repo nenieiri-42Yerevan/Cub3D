@@ -22,7 +22,10 @@ static int	get_path(char **str, char **set_var)
 	*set_var = ft_strtrim(&(*str)[i], " \t");
 	if ((ft_strlen(*set_var) == 0) || (ft_strchr(*set_var, ' ') != NULL) || \
 			(ft_strchr(*set_var, '\t')))
+	{
+		free(*set_var);
 		return (errors_param(1, (*str)));
+	}
 	return (0);
 }
 

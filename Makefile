@@ -31,7 +31,7 @@ UNIX_NAME	= $(shell uname -s)
 ifeq ($(UNIX_NAME),Darwin)
 LIBMLX		= $(LIBMLX_M)
 LIBMLX_LINK	= $(LIBMLX_M_)
-else ($(UNIX_NAME),Linux)
+else ifeq ($(UNIX_NAME),Linux)
 LIBMLX		= $(LIBMLX_L)
 LIBMLX_LINK	= $(LIBMLX_L_)
 endif

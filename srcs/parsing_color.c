@@ -44,7 +44,10 @@ static int	parsing_one(char *set_var, int *map_var, char line_end)
 
 	color = malloc(sizeof(char) * 4);
 	if (color == NULL)
+	{
+		free(color);
 		return (1);
+	}
 	color[3] = '\0';
 	if (set_var[0] == '0' && set_var[1] == line_end)
 			*map_var = 0;
@@ -54,7 +57,11 @@ static int	parsing_one(char *set_var, int *map_var, char line_end)
 			*map_var = ft_atoi(color);
 	}
 	else
+	{
+		free(color);
 		return (errors_param(2, set_var));
+	}
+	free(color);
 	return (0);
 }
 

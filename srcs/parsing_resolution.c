@@ -23,9 +23,16 @@ static int	parsing_r_y(char *trim_str, int *r_x, int *r_y)
 	if (trim_str[i] == '\0')
 		*r_y = ft_atoi(&trim_str[0]);
 	else if (ft_isspace(trim_str[i]) == 1)
+	{
+		free(trim_str);
 		return (errors(3));
+	}
 	else
+	{
+		free(trim_str);
 		return (errors(2));
+	}
+	free(trim_str);
 	if (!(*r_y >= 480 && *r_y <= 2160) || !(*r_x >= 640 && *r_x <= 4096))
 		return (errors(4));
 	return (0);
@@ -38,7 +45,10 @@ int	parsing_resolution(char **str, int *r_x, int *r_y)
 
 	trim_str = ft_strtrim(&(*str)[2], " ");
 	if (ft_strlen(trim_str) == 0)
+	{
+		free(trim_str);
 		return (errors(3));
+	}
 	i = -1;
 	while (++i < ft_strlen(trim_str) && trim_str[i] >= '0' \
 			&& trim_str[i] <= '9')
@@ -49,12 +59,24 @@ int	parsing_resolution(char **str, int *r_x, int *r_y)
 		*r_x = ft_atoi(&trim_str[0]);
 	}
 	else if (trim_str[i] == '\0')
+	{	
+		free(trim_str);
 		return (errors(2));
+	}
 	else
+	{
+		free(trim_str);
 		return (errors(1));
+	}
 	if (ft_strlen(&trim_str[i + 1]) != 0)
+	{
+		free(trim_str);
 		trim_str = ft_strtrim(&trim_str[i + 1], " ");
+	}
 	else
+	{	
+		free(trim_str);
 		return (errors(2));
+	}
 	return (parsing_r_y(trim_str, r_x, r_y));
 }
