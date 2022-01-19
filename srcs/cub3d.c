@@ -15,8 +15,8 @@
 static void	game_init(void)
 {
 	game.map = my_map;
-	game.draw.move_speed = 0.12;
-	game.draw.rot_speed = 0.14;
+	game.draw.move_speed = 0.08;
+	game.draw.rot_speed = 0.10;
 	game.draw.motion_x = 99999;
 	game.sprites.perp_dists = ft_calloc(game.map.r_x, sizeof(double));
 	if (game.sprites.perp_dists == 0)

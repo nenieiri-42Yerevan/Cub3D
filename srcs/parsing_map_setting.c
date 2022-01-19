@@ -101,6 +101,8 @@ int	parsing_map_settings(char ***map, size_t map_height)
 	size_t	i;
 	int		result;
 	int		*duplicates;
+	int		ret;
+
 
 	init(&i, &result, &duplicates);
 	while (++i < map_height)
@@ -120,5 +122,7 @@ int	parsing_map_settings(char ***map, size_t map_height)
 		else if (result == 1)
 			return (1);
 	}
-	return (check_duplicates(duplicates));
+	ret = check_duplicates(duplicates);
+	free(duplicates);
+	return (ret); 
 }

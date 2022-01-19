@@ -44,10 +44,7 @@ static int	parsing_one(char *set_var, int *map_var, char line_end)
 
 	color = malloc(sizeof(char) * 4);
 	if (color == NULL)
-	{
-		free(color);
 		return (1);
-	}
 	color[3] = '\0';
 	if (set_var[0] == '0' && set_var[1] == line_end)
 			*map_var = 0;
@@ -65,15 +62,17 @@ static int	parsing_one(char *set_var, int *map_var, char line_end)
 	return (0);
 }
 
-static int	parsing_f(char **set_var)
+static int	parsing_f(char *set_var)
 {
-	if (parsing_one(*set_var, &my_map.fr, ',') == 0)
+	char	*colon;
+
+	if (parsing_one(set_var, &my_map.fr, ',') == 0)
 	{
-		(*set_var) = ft_strchr(*set_var, ',') + 1;
-		if (parsing_one(*set_var, &my_map.fg, ',') == 0)
+		colon = ft_strchr(set_var, ',') + 1;
+		if (parsing_one(colon, &my_map.fg, ',') == 0)
 		{
-			(*set_var) = ft_strchr(*set_var, ',') + 1;
-			if (parsing_one(*set_var, &my_map.fb, '\0') == 0)
+			colon = ft_strchr(colon, ',') + 1;
+			if (parsing_one(colon, &my_map.fb, '\0') == 0)
 				return (0);
 		}
 	}
@@ -83,22 +82,33 @@ static int	parsing_f(char **set_var)
 int	parsing_color(char **str, char c)
 {
 	char	*set_var;
+	char	*colon;
+	int		result;
 
+	result = 0;
 	set_var = ft_strtrim(&(*str)[2], " \t");
 	if (c == 'c')
 	{
 		if (parsing_one(set_var, &my_map.cr, ',') == 0)
 		{
-			set_var = ft_strchr(set_var, ',') + 1;
-			if (parsing_one(set_var, &my_map.cg, ',') == 0)
+			colon = ft_strchr(set_var, ',') + 1;
+			if (parsing_one(colon, &my_map.cg, ',') == 0)
 			{
-				set_var = ft_strchr(set_var, ',') + 1;
-				if (parsing_one(set_var, &my_map.cb, '\0') == 0)
-					return (0);
+				colon = ft_strchr(colon, ',') + 1;
+				if (parsing_one(colon, &my_map.cb, '\0') == 0)
+				{
+					free(set_var);
+					return (result);
+				}
 			}
 		}
 	}
 	else
-		return (parsing_f(&set_var));
+	{
+		result = parsing_f(set_var);
+		free(set_var);
+		return (result);
+	}
+	free(set_var);
 	return (1);
 }

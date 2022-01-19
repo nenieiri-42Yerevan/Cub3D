@@ -26,6 +26,14 @@
 # include "mlx.h"
 # include "keys.h"
 
+# ifdef OS_NAME
+#  if OS_NAME == Darwin
+#   define OS 1
+#  else
+#   define 0
+#  endif
+# endif
+
 typedef struct s_data
 {
 	void	*img;

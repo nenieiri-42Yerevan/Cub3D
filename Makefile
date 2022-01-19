@@ -45,7 +45,8 @@ RM			= rm -rf
 .PHONY:		all clean fclean re bonus bonus_on
 
 ./tmp/%.o:	./srcs/%.c ./includes/cub3D.h
-			$(CC) $(CFLAGS) $(INCLUDES) -D BONUS=$(BONUS_) -o $@ -c $<
+			$(CC) $(CFLAGS) $(INCLUDES) -D OS_NAME=$(UNIX_NAME) \
+				-D BONUS=$(BONUS_) -o $@ -c $<
 
 all:		bonus
 
