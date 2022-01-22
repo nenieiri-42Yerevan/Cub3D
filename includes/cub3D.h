@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 18:14:23 by vismaily          #+#    #+#             */
-/*   Updated: 2022/01/15 23:24:00 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/01/22 22:01:43 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #  if OS_NAME == Darwin
 #   define OS 1
 #  else
-#   define 0
+#   define OS 0
 #  endif
 # endif
 

@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 16:28:22 by vismaily          #+#    #+#             */
-/*   Updated: 2022/01/15 23:12:54 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/01/22 22:32:25 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ int	parsing_map_settings(char ***map, size_t map_height)
 	int		*duplicates;
 	int		ret;
 
-
 	init(&i, &result, &duplicates);
 	while (++i < map_height)
 	{
@@ -123,6 +122,5 @@ int	parsing_map_settings(char ***map, size_t map_height)
 			return (1);
 	}
 	ret = check_duplicates(duplicates);
-	free(duplicates);
-	return (ret); 
+	return (ret);
 }

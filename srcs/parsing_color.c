@@ -6,7 +6,7 @@
 /*   By: vismaily <nenie_iri@mail.ru>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 12:07:10 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/13 20:30:20 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/01/22 22:40:45 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,36 +79,34 @@ static int	parsing_f(char *set_var)
 	return (1);
 }
 
+static int	parsing_c(char *set_var)
+{
+	char	*colon;
+
+	if (parsing_one(set_var, &my_map.cr, ',') == 0)
+	{
+		colon = ft_strchr(set_var, ',') + 1;
+		if (parsing_one(colon, &my_map.cg, ',') == 0)
+		{
+			colon = ft_strchr(colon, ',') + 1;
+			if (parsing_one(colon, &my_map.cb, '\0') == 0)
+				return (0);
+		}
+	}
+	return (1);
+}
+
 int	parsing_color(char **str, char c)
 {
 	char	*set_var;
-	char	*colon;
 	int		result;
 
 	result = 0;
 	set_var = ft_strtrim(&(*str)[2], " \t");
 	if (c == 'c')
-	{
-		if (parsing_one(set_var, &my_map.cr, ',') == 0)
-		{
-			colon = ft_strchr(set_var, ',') + 1;
-			if (parsing_one(colon, &my_map.cg, ',') == 0)
-			{
-				colon = ft_strchr(colon, ',') + 1;
-				if (parsing_one(colon, &my_map.cb, '\0') == 0)
-				{
-					free(set_var);
-					return (result);
-				}
-			}
-		}
-	}
+		result = parsing_c(set_var);
 	else
-	{
 		result = parsing_f(set_var);
-		free(set_var);
-		return (result);
-	}
 	free(set_var);
-	return (1);
+	return (result);
 }

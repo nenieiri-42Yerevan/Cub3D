@@ -6,7 +6,7 @@
 /*   By: vismaily <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 22:50:58 by vismaily          #+#    #+#             */
-/*   Updated: 2021/11/13 20:37:42 by vismaily         ###   ########.fr       */
+/*   Updated: 2022/01/22 22:32:17 by vismaily         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,12 @@ int	check_duplicates(int *duplicates)
 	while (i < len)
 	{
 		if (duplicates[i] > 1)
+		{
+			free(duplicates);
 			return (errors(10));
+		}
 		i++;
 	}
+	free(duplicates);
 	return (0);
 }

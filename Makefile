@@ -70,7 +70,6 @@ endif
 clean:
 			@$(MAKE) -C $(LIBFT) clean
 			@$(MAKE) -C $(LIBGNL) clean
-			@$(MAKE) -C $(LIBMLX) clean
 			@$(RM) $(TMP)
 
 fclean:		clean
