@@ -25,10 +25,10 @@ static int	get_len(int n)
 
 	len = 0;
 	if (n <= 0)
-		len++;
+		++len;
 	while (n != 0)
 	{
-		len++;
+		++len;
 		n /= 10;
 	}
 	return (len);
