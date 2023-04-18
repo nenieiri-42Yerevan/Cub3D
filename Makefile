@@ -20,6 +20,7 @@ LIBGNL		= $(LIB)/get_next_line
 
 LIBMLX_L	= $(LIB)/mlx_linux
 LIBMLX_L_	= -L$(LIBMLX_L) -lmlx_Linux -lXext -lX11 -lm -lz
+# LIBMLX_L_	= -L$(LIBMLX_L) -lmlx_Linux -lXext -lX11 -lm
 
 LIBMLX_M	= $(LIB)/mlx
 LIBMLX_M_	= -L$(LIBMLX_M) -lmlx -framework OpenGL -framework AppKit
@@ -63,6 +64,7 @@ $(NAME):	$(TMP) $(OBJS)
 			@$(MAKE) -C $(LIBGNL) all
 			@$(MAKE) -C $(LIBMLX) all
 			@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -o $(NAME)
+			# @$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -Wl,--allow-multiple-definition -o $(NAME)
 ifeq ($(UNIX_NAME),Darwin)
 			@$(MACH_EXTRA)
 endif
