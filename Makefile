@@ -63,8 +63,8 @@ $(NAME):	$(TMP) $(OBJS)
 			@$(MAKE) -C $(LIBFT) all
 			@$(MAKE) -C $(LIBGNL) all
 			@$(MAKE) -C $(LIBMLX) all
-			@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -o $(NAME)
-			# @$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -Wl,--allow-multiple-definition -o $(NAME)
+			# @$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -o $(NAME)
+			@$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LINKERS) -Wl,--allow-multiple-definition -o $(NAME)
 ifeq ($(UNIX_NAME),Darwin)
 			@$(MACH_EXTRA)
 endif
